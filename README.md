@@ -1,10 +1,12 @@
 # Glyph #
 
+![alt text](glyph.png)
+
 ## Authors ##
 Paige Plander
 
 ## Purpose ##
-Glyph is an Image-based communication app created for non-verbal individuals. It can be thought of as a app replacement for traditional picture card binders (see image)
+Glyph is an Image-based communication app created for non-verbal individuals. It can be thought of as a app replacement for traditional picture card binders This is [an example](http://example.com/ "Title") inline link.(see image)
 
 ## Features ##
 *	Ability to add icons to the the “IconTiles” CollectionView. Each icon will have an image and a label. When the user presses an Icon, it will audibly read out the label that corresponds to it. This feature replaces the traditional picture card binders that many orally impaired or autistic individuals use. 
