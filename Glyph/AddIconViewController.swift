@@ -31,10 +31,12 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
     
     @IBAction func shootPhoto(sender: UIButton) {
         if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            picker.delegate = self
             picker.allowsEditing = false
-            picker.sourceType = UIImagePickerControllerSourceType.Camera
+            picker.sourceType = .Camera
             picker.cameraCaptureMode = .Photo
             presentViewController(picker, animated: true, completion: nil)
+            
         } else {
             noCamera()
         }
@@ -77,13 +79,10 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func chooseFromLibrary(sender: UIButton) {
-        // tells the picker to include all of the photo, not an edited portion
         picker.allowsEditing = false
         picker.sourceType = .PhotoLibrary
-        // creates a pop-over image-picker. (necessary for iPad)
         picker.modalPresentationStyle = .Popover
-        presentViewController(picker, animated: true, completion: nil)//4
-        // reference rectangle to view from (uses the bar button item)
+        presentViewController(picker, animated: true, completion: nil)
         picker.popoverPresentationController?.sourceView = sender
     }
     
@@ -118,25 +117,35 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Image Picker Delegate Methods
-    func scaleImageWith(newImage:UIImage, and newSize:CGSize)->UIImage{
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        newImage.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-    
      // taken from http://stackoverflow.com/questions/27833075/swift-uilabel-programmatically-updates-after-uibutton-pressed
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let pickedImage: UIImage = (info as NSDictionary).objectForKey(UIImagePickerControllerOriginalImage) as! UIImage
-    
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        let pickedImage: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         let sizeOfImageView:CGRect = imagePicker.frame
-      
         imagePicker.frame = sizeOfImageView
         imagePicker.image = pickedImage
         img = imagePicker.image
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+
+    // scale down the image size for a tile
+    func scaleDownImage(image: UIImage) -> UIImage {
+        let size = image.size
+        let widthRatio  = 150/image.size.width
+        let heightRatio = 150/image.size.height
+        var newImageSize: CGSize
+        if(widthRatio > heightRatio) {
+            newImageSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
+        } else {
+            newImageSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
+        }
+        let rect = CGRectMake(0, 0, 150, 150)
+        UIGraphicsBeginImageContextWithOptions(newImageSize, false, 1.0)
+        image.drawInRect(rect)
+        let imageToReturn = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return imageToReturn
     }
     
 
@@ -188,7 +197,8 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
             if let _ = imagePicker?.image {
                 if let text = returnImageName() {
                     //folder stuff
-                    data.add(imagePicker.image!, label: text, folder: returnFolderName())
+                    let image = scaleDownImage(imagePicker.image!)
+                    data.add(image, label: text, folder: returnFolderName())
                     return true
                 }
                 else {
