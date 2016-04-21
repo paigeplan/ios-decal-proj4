@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8E8289A110D8EB5821319CFB6BEC76A23177DC8A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8E8289A110D8EB5821319CFB6BEC76A23177DC8A" : 0,
+    "5F604719A35A3A165AA431AA28B65C169D554C19" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E3647BF3-0257-43E9-9696-954097D46C95",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8E8289A110D8EB5821319CFB6BEC76A23177DC8A" : "ios-decal-proj4\/",
+    "5F604719A35A3A165AA431AA28B65C169D554C19" : "Glyph"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Glyph",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Glyph.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/paigeplan\/Glyph.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5F604719A35A3A165AA431AA28B65C169D554C19"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/paigeplan\/ios-decal-proj4.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8E8289A110D8EB5821319CFB6BEC76A23177DC8A"
+    }
+  ]
+}
