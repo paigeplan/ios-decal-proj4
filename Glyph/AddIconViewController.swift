@@ -19,7 +19,7 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
     @IBOutlet var imagePicker: UIImageView!
     
     @IBOutlet weak var previewLabel: UILabel!
-   
+    
     var img: UIImage?
     
     @IBOutlet weak var addButton: UIButton!
@@ -73,7 +73,7 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
         alertVC.addAction(okAction)
         presentViewController(alertVC, animated: true, completion: nil)
     }
-
+    
     @IBAction func textEdited(sender: UITextField) {
         previewLabel.text = sender.text
     }
@@ -117,7 +117,7 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-     // taken from http://stackoverflow.com/questions/27833075/swift-uilabel-programmatically-updates-after-uibutton-pressed
+    // taken from http://stackoverflow.com/questions/27833075/swift-uilabel-programmatically-updates-after-uibutton-pressed
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         picker.dismissViewControllerAnimated(true, completion: nil)
         let pickedImage: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
@@ -128,7 +128,7 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
         
     }
     
-
+    
     // scale down the image size for a tile
     func scaleDownImage(image: UIImage) -> UIImage {
         let size = image.size
@@ -148,7 +148,7 @@ class AddIconViewController: UITableViewController, UIImagePickerControllerDeleg
         return imageToReturn
     }
     
-
+    
     // Executes if the user wants to cancel (inside choose Photo)
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
